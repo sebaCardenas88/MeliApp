@@ -11,6 +11,8 @@
     <color name="darkerYellow">#F5D218</color>
     <color name="azulBoton">#3483FA</color>
     <color name="grisClaro"> #999B9C</color>
+    <color name="letraProdcuto">#333333</color>
+    <color name="letraDetalle">#999B9C</color>
 
 
 </resources>
