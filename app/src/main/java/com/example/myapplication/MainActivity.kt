@@ -52,30 +52,36 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     val categoryId=predictorResponse[0].category_id
                     val callTop20=RetrofitInstance.api.getTwentyproducts(categoryId)
                     val callTop20Response=callTop20.body()!!
-                    if (callTop20.isSuccessful){
+                    if (callTop20.isSuccessful) {
                         Log.d("Respuesta20Productos", callTop20Response.content.toString())
-                        var listarItems= mutableListOf<String>()
-                        for (producto in callTop20Response.content){
-                            Log.d("Producto Individual",producto.type)
+                        var listarItems = mutableListOf<String>()
+                        for (producto in callTop20Response.content) {
+                            Log.d("Producto Individual", producto.type)
                             listarItems.add(producto.id)
 
-                             listado=listarItems.joinToString(",")
-                            Log.d("listaItems",listado)
+                            listado = listarItems.joinToString(",")
+                            Log.d("listaItems", listado)
                         }
 
                         //Lamadas a los productos
-                        val callItems=RetrofitInstance.api.getItems(listado)
-                        val getItemsResponse=callItems.body()!!
-                        if (callItems.isSuccessful){
 
-                        for (body in callItems.body()!!){
+                       /**
+                        val callItems = RetrofitInstance.api.getItems(listado)
+                        val getItemsResponse = callItems.body()!!
 
-                            Log.d("itemPrecio",body.body.condition)
+
+                        if (callItems.isSuccessful) {
+
+                            for (body in callItems.body()!!) {
+
+                                Log.d("itemPrecio", body.body.price.toString())
+                            }
+
+                            // Log.d("items",callItems.body().toString())
+                        } else {
+                            //Log.d("error","shiiiiiiittttt")
                         }
-
-                        // Log.d("items",callItems.body().toString())
-                        }else{}
-
+*/
 
                     }else{
                         Log.d("HiceCagadas20000", "aiuuddaaaaa20000")
