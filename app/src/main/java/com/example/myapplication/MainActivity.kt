@@ -66,6 +66,15 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                         //Lamadas a los productos
                         val callItems=RetrofitInstance.api.getItems(listado)
                         val getItemsResponse=callItems.body()!!
+                        if (callItems.isSuccessful){
+
+                        for (body in callItems.body()!!){
+
+                            Log.d("itemPrecio",body.body.condition)
+                        }
+
+                        // Log.d("items",callItems.body().toString())
+                        }else{}
 
 
                     }else{
