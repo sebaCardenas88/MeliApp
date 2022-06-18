@@ -3,7 +3,124 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/menuSuperior"
     android:layout_height="match_parent"
     tools:context=".ProductActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearTop"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/primaryYellow"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iconLupa"
+            android:id="@+id/iconMenu"
+            android:src="@drawable/ic__heart"
+
+            app:layout_constraintVertical_bias="0.4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias=".95"
+
+            />
+
+        <ImageView
+            android:id="@+id/iconLupa"
+            android:layout_width="70dp"
+
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:layout_constraintEnd_toStartOf="@id/iconShop"
+            app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="1"
+            android:src="@drawable/ic__lupa"
+
+            />
+
+
+        <ImageView
+            android:id="@+id/iconShop"
+            android:layout_width="46dp"
+            android:layout_height="39dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias=".95"
+            android:src="@drawable/ic__otrocarro"
+            app:layout_constraintVertical_bias="0.2"/>
+
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        app:layout_constraintTop_toBottomOf="@id/linearTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:background="@color/primaryYellow"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/location"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:src="@drawable/ic_location_on_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+        <TextView
+            android:id="@+id/envioDom"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Enviar a nombre de usuario - Direccion"
+            android:textColor="@color/letraProdcuto"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/location"
+            android:gravity="center"
+            />
+        <ImageView
+            app:layout_constraintStart_toEndOf="@+id/envioDom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_navigate_next_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

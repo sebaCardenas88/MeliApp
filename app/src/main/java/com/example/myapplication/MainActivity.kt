@@ -62,10 +62,10 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                             listado = listarItems.joinToString(",")
                             Log.d("listaItems", listado)
                         }
-
+//Desde aca para comentar
                         //Lamadas a los productos
 
-                       /**
+
                         val callItems = RetrofitInstance.api.getItems(listado)
                         val getItemsResponse = callItems.body()!!
 
@@ -81,8 +81,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                         } else {
                             //Log.d("error","shiiiiiiittttt")
                         }
-*/
 
+
+                        //hasta aca
                     }else{
                         Log.d("HiceCagadas20000", "aiuuddaaaaa20000")
                     }
