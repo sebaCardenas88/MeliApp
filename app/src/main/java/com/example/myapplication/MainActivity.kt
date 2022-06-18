@@ -3,6 +3,7 @@ package com.example.myapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -67,28 +68,43 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
 
                         val callItems = RetrofitInstance.api.getItems(listado)
-                        val getItemsResponse = callItems.body()!!
+                        val getItemsResponse = callItems.body()
 
-
+                        runOnUiThread {
+                            if (callItems.isSuccessful){
+                                productsImages.clear()
+                                if (getItemsResponse != null) {
+                                    for (i in getItemsResponse){
+                                        productsImages.add(i.body)
+                                    }
+                                }
+                                adapter.notifyDataSetChanged()
+                            }
+                        }/*
                         if (callItems.isSuccessful) {
 
+
+
+/*
                             for (body in callItems.body()!!) {
 
-                                Log.d("itemPrecio", body.body.price.toString())
+                                if (!body.body.title.isNullOrEmpty()){
+                                Log.d("itemPrecio", body.body.title)}
+
                             }
 
                             // Log.d("items",callItems.body().toString())
-                        } else {
-                            //Log.d("error","shiiiiiiittttt")
-                        }
+  */                      } else {
+                            showError()
+                        }*/
 
 
                         //hasta aca
                     }else{
-                        Log.d("HiceCagadas20000", "aiuuddaaaaa20000")
+                        showError()
                     }
                 } else {
-                    Log.d("HiceCagadas", "aiuuddaaaaa")
+                    showError()
                 }
 
 
@@ -100,6 +116,10 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             searchProduct(query.toLowerCase())
         }
         return true
+    }
+
+    fun showError(){
+        Toast.makeText(this,"No es posible encontrar la informacion solicitada",Toast.LENGTH_SHORT).show()
     }
 
 

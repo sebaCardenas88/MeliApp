@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
@@ -31,7 +32,8 @@ import com.example.myapplication.databinding.RowItemBinding
         holder.binding.detalleProducto.text = item.condition
         holder.binding.zonaProducto.text = item.currency_id
         //FALTA CARGAR IMAGEN EN ADAPTER!!!!!!!!!
-        holder.bind(item.warranty)
+//        holder.bind(item.warranty)
+        holder.binding.itemFila.setOnClickListener { Toast.makeText(it.context,"Hola",Toast.LENGTH_SHORT).show()}
 
     }
 

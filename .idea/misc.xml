@@ -8,10 +8,15 @@
         <entry key="app/src/main/res/drawable/ic__1485981516276573063767.xml" value="0.2235" />
         <entry key="app/src/main/res/drawable/ic__heart.xml" value="0.169" />
         <entry key="app/src/main/res/drawable/ic__lupa.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.144" />
         <entry key="app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.188" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.144" />
         <entry key="app/src/main/res/drawable/ic_location_on_24.xml" value="0.188" />
+        <entry key="app/src/main/res/drawable/icon_despleg_24.xml" value="0.144" />
+        <entry key="app/src/main/res/drawable/shop_24.xml" value="0.144" />
+        <entry key="app/src/main/res/layout/activity_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.29583333333333334" />
-        <entry key="app/src/main/res/layout/activity_product.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_product.xml" value="0.125" />
         <entry key="app/src/main/res/layout/row_item.xml" value="0.4186046511627907" />
       </map>
     </option>
@@ -21,5 +26,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.125" />
+      </ProjectState>
+    </option>
   </component>
 </project>
