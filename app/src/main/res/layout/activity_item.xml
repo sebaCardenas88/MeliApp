@@ -111,7 +111,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/list"
-        android:layout_width="460dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:padding="16dp"

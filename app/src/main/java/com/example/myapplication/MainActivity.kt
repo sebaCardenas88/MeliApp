@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.api_service.RetrofitInstance
 import com.example.myapplication.data_model.Body
+import com.example.myapplication.data_model.ItemResponse
 import com.example.myapplication.data_model.Picture
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.recycler_view.ProductAdapter
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     initRecyclerView()
         //Activo el buscador
         binding.svProducts.setOnQueryTextListener(this)
+
 
 
     }
@@ -68,18 +71,25 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
 
                         val callItems = RetrofitInstance.api.getItems(listado)
-                        val getItemsResponse = callItems.body()
+                        val getItemsResponse:List<ItemResponse>? = callItems.body()
 
                         runOnUiThread {
                             if (callItems.isSuccessful){
                                 productsImages.clear()
-                                if (getItemsResponse != null) {
+                                if (!getItemsResponse.isNullOrEmpty()) {
                                     for (i in getItemsResponse){
+
                                         productsImages.add(i.body)
+
                                     }
                                 }
                                 adapter.notifyDataSetChanged()
                             }
+                            //Intent para pasar a la otra pagina
+
+
+
+
                         }/*
                         if (callItems.isSuccessful) {
 
