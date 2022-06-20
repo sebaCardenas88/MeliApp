@@ -44,11 +44,12 @@ class ProductAdapter(val listProducts:List<Body>):RecyclerView.Adapter<ProductAd
 
         //Pruebo q al hacer click sobre el producto, me muestre la posicion en el listado de items
         holder.binding.itemFila.setOnClickListener {
-            Toast.makeText(it.context, holder.adapterPosition.toString(), Toast.LENGTH_SHORT).show()
+            //Toast.makeText(it.context, holder.adapterPosition.toString(), Toast.LENGTH_SHORT).show()
             //intent
 
             val intent = Intent(holder.binding.root.context, activity_item::class.java,)
             intent.putExtra("item",item)
+            intent.putExtra("image",item.secure_thumbnail)
             holder.binding.nombreProducto.context.startActivity(intent)
         }
 
