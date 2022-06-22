@@ -17,5 +17,5 @@ data class Body(
 
 
     //PROBANDO IMAGEN -- FALTA CARGAR URL
-    val warranty: String
+    val warranty: String?
 ):Parcelable

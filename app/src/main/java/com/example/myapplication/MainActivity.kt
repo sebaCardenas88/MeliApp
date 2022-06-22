@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     if (callTop20.isSuccessful) {
                         Log.d("Respuesta20Productos", callTop20Response.content.toString())
                         var listarItems = mutableListOf<String>()
-                        for (producto in callTop20Response.content) {
+                        for (producto in callTop20Response?.content) {
                             Log.d("Producto Individual", producto.type)
                             listarItems.add(producto.id)
 
