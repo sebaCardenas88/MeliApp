@@ -110,5 +110,18 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 
+    <TextView
+        android:id="@+id/textoError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constrainTexto"
+        app:layout_constraintVertical_bias="0.674"
+        tools:layout_editor_absoluteX="105dp"
+        android:text="Mostrar para error"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

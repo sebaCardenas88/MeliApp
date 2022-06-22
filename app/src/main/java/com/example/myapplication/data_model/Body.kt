@@ -9,13 +9,13 @@ data class Body(
     val condition: String,//detalle
 
     val currency_id: String, //zona
-
+    val pictures:List<Picture>,
     val price: Double, // precio
-   val secure_thumbnail: String,
+  // val secure_thumbnail: String,
 
     val title: String, //nombre producto
 
 
     //PROBANDO IMAGEN -- FALTA CARGAR URL
-    val warranty: String?
+    val warranty: String
 ):Parcelable

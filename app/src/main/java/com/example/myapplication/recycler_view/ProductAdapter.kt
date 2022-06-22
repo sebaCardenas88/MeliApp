@@ -1,5 +1,4 @@
 package com.example.myapplication.recycler_view
-
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,7 +8,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-
 import com.example.myapplication.R
 import com.example.myapplication.activity_item
 import com.example.myapplication.data_model.Body
@@ -39,7 +37,7 @@ class ProductAdapter(val listProducts:List<Body>):RecyclerView.Adapter<ProductAd
         holder.binding.detalleProducto.text = item.condition
         holder.binding.zonaProducto.text = item.currency_id
 
-      holder.bind(item.secure_thumbnail)
+      holder.bind(item.pictures[0].secure_url)
 
 
         //Pruebo q al hacer click sobre el producto, me muestre la posicion en el listado de items
@@ -49,7 +47,7 @@ class ProductAdapter(val listProducts:List<Body>):RecyclerView.Adapter<ProductAd
 
             val intent = Intent(holder.binding.root.context, activity_item::class.java,)
             intent.putExtra("item",item)
-            intent.putExtra("image",item.secure_thumbnail)
+           // intent.putExtra("image",item.secure_thumbnail)
             holder.binding.nombreProducto.context.startActivity(intent)
         }
 
