@@ -7,3 +7,4 @@ data class Content(
     @SerializedName("position") val position: Int,
     @SerializedName("type") val type: String
 )
+

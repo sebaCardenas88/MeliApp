@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="mjeError">La busqueda no ha arrojado ningun resultado</string>
+    <string name="Res2000">+2000 Resultados</string>
+    <string name="filtrar">Filtrar ( 1 )</string>
+    <string name="focus">Ford Focus Mod 2020</string>
+    <string name="focusPrecio">$2.000.000</string>
+    <string name="focusDesc">Impecable estado, como nuevo. Solo detalles</string>
+    <string name="focusZona">Bernal, zona sur. Bs. As.</string>
+    <string name="usuarioIt">Enviar a nombre de usuario - Direccion</string>
+    <string name="detalleUno">Volskwagen Gol 1.6 - Connect</string>
+    <string name="tituloIt">Volskwagen Gol 1.6 - Connect</string>
+    <string name="detalleDos">Volskwagen Gol 1.6 - Connect</string>
+    <string name="precioIt">$2.000.000</string>
+    <string name="detalleIt">Descripcion en detalle</string>
+    <string name="btnFav">añadir a favoritos</string>
+
 </resources>

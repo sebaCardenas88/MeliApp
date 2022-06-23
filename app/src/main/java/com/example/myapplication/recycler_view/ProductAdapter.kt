@@ -16,59 +16,56 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.databinding.RowItemBinding
 import kotlin.coroutines.coroutineContext
 
-class ProductAdapter(val listProducts:List<Body>):RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+                    /**
+                     * This is the adapter for the RecyclerView
+                     * */
+    class ProductAdapter(val listProducts:List<Body>):RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+                override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
 
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.row_item, parent, false)
+                    val layout = LayoutInflater.from(parent.context).inflate(R.layout.row_item, parent, false)
 
-        return ProductViewHolder(layout)
-    }
-
-    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-
-        val item = listProducts[position]
+                    return ProductViewHolder(layout)
+                }
 
 
+                override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
 
-        holder.binding.nombreProducto.text = item.title
-        holder.binding.precioProducto.text = item.price.toString()
-        holder.binding.detalleProducto.text = item.condition
-        holder.binding.zonaProducto.text = item.currency_id
+                    val item = listProducts[position]
 
-      holder.bind(item.pictures[0].secure_url)
-
-
-        //Pruebo q al hacer click sobre el producto, me muestre la posicion en el listado de items
-        holder.binding.itemFila.setOnClickListener {
-            //Toast.makeText(it.context, holder.adapterPosition.toString(), Toast.LENGTH_SHORT).show()
-            //intent
-
-            val intent = Intent(holder.binding.root.context, activity_item::class.java,)
-            intent.putExtra("item",item)
-           // intent.putExtra("image",item.secure_thumbnail)
-            holder.binding.nombreProducto.context.startActivity(intent)
-        }
+                    holder.binding.nombreProducto.text = item.title
+                    holder.binding.precioProducto.text = "$ ${item.price}0"
+                    holder.binding.detalleProducto.text = item.condition
+                    holder.binding.zonaProducto.text = item.currency_id
+                    holder.bind(item.pictures[0].secure_url)
 
 
-    }
+                  /**
+                   * When the user click over the item,this opens the next activity and pass the clicked item information
+                   * */
+                    holder.binding.itemFila.setOnClickListener {
+                        val intent = Intent(holder.binding.root.context, activity_item::class.java,)
+                        intent.putExtra("item",item)
+                        holder.binding.nombreProducto.context.startActivity(intent)
+                    }
 
+            }
 
-
-
-    override fun getItemCount() = listProducts.size
+                    override fun getItemCount() = listProducts.size
 
 
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //Cargo el viewBinding
-        val binding = RowItemBinding.bind(itemView)
 
+                    val binding = RowItemBinding.bind(itemView)
 
-        fun bind(image:String) {
+                    /**
+                     * This function is for loading images in the adapter
+                                 * */
+                    fun bind(image:String) {
 
-            Glide.with(itemView.context).load(image).into(binding.imagenProducto)
-        }
+                        Glide.with(itemView.context).load(image).into(binding.imagenProducto)
+                    }
 
     }
 

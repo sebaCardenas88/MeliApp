@@ -6,3 +6,4 @@ data class Top20Response(
     @SerializedName("content") val content: List<Content>,
     @SerializedName("query_data")val query_data: QueryData
 )
+

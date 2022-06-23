@@ -11,26 +11,25 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+
+/**
+ * In this interface, i have the differents calls to the API that will be used for the differents searchings
+ * */
 interface APIInterface {
 
 
-
-    //@Path("COUNTRY_ID") country_id:String="MLM"
-   // @Headers("Authorization: Bearer ${Constants.ACCESS_TOKEN}")
-    //@Query("limit") limit:Int=1
-    @GET("sites/MLA/domain_discovery/search?limit=1")
-    suspend fun getCategoryPredictor(
-                                     @Query("q") query:String):Response<List<PredictorCategoryResponse>>
+            @GET("sites/MLA/domain_discovery/search?limit=1")
+            suspend fun getCategoryPredictor(@Query("q") query:String):Response<List<PredictorCategoryResponse>>
 
 
-    @Headers("Authorization: Bearer $ACCESS_TOKEN")
-    @GET("highlights/MLA/category/{categories}")
-    suspend fun getTwentyproducts(@Path("categories") categories:String):Response<Top20Response>
+            @Headers("Authorization: Bearer $ACCESS_TOKEN")
+            @GET("highlights/MLA/category/{categories}")
+            suspend fun getTwentyproducts(@Path("categories") categories:String):Response<Top20Response>
 
 
-    @Headers("Authorization: Bearer $ACCESS_TOKEN")
-    @GET("items")
-    suspend fun getItems(@Query("ids")ids:String):Response<List<ItemResponse>>
+            @Headers("Authorization: Bearer $ACCESS_TOKEN")
+            @GET("items")
+            suspend fun getItems(@Query("ids")ids:String):Response<List<ItemResponse>>
 
 
 

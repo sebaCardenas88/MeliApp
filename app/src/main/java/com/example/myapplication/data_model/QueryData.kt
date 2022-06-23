@@ -5,3 +5,4 @@ data class QueryData(
     val highlight_type: String,
     val id: String
 )
+

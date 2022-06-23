@@ -8,12 +8,12 @@ import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.myapplication.data_model.Atribute
 import com.example.myapplication.data_model.Body
 import com.example.myapplication.data_model.Picture
 import com.example.myapplication.databinding.ActivityItemBinding
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.recycler_view.ProductAdapter
-import com.example.myapplication.sharedpreferences.ConfigPref
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -23,7 +23,7 @@ import java.lang.reflect.Type
 
 class activity_item : AppCompatActivity() {
 
-     var listaFav:ArrayList<Body> = ArrayList()
+    var listaFav: ArrayList<Body> = ArrayList()
 
     lateinit var binding: ActivityItemBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,10 +40,29 @@ class activity_item : AppCompatActivity() {
         binding.detalleVendedor.text = itemRecibido?.currency_id.toString()
         binding.detallePrecio.text = itemRecibido?.price.toString()
         Glide.with(this).load(itemRecibido!!.pictures[0].secure_url).into(binding.imageProducto)
+        //Agregado
+        binding.descripcionUno.text = itemRecibido?.warranty
+
+        var descripcion = ""
+        for (i in itemRecibido.attributes) {
+            if (!(i.name.isNullOrEmpty() || i.value_name.isNullOrEmpty())) {
+                descripcion += " \n${i.name.toString()} : ${i.value_name.toString()}\n "
+            }
+        }
+        //Log.d("strin", descripcion)
+        binding.descripcionUno.text=descripcion
 
 
         //Mostrar data si hay algo cargado previamente
+        //FUNCIONA
+        /*
+        for (i in itemRecibido.attributes){
+            if (!(i.name.toString().isNullOrEmpty() || i.value_name.toString().isEmpty()))
 
+
+            Log.d("atrib","${i.name.toString()} : ${i.value_name.toString()}")
+
+        }*/
 
 
         //OnClickLiatener
@@ -54,66 +73,84 @@ class activity_item : AppCompatActivity() {
                 itemRecibido?.condition,
                 itemRecibido?.currency_id,
                 itemRecibido!!.price,
-                itemRecibido.pictures
+                itemRecibido.pictures,
+                itemRecibido.attributes
             )
 
+                Log.d("save",listaFav[listaFav.size-1].title)
+
+
+            Log.d("saveTamanio",listaFav.size.toString())
+
         }
-     loadData()
+        loadData()
 
 
     }
 
 
+    private fun loadData() {
+        val sharedPreferences = applicationContext.getSharedPreferences(
+            "DATA",
+            MODE_PRIVATE
+        )
+        val gson = Gson()
+        val json = sharedPreferences.getString("product_item", null)
 
-        private fun loadData() {
-            val sharedPreferences = applicationContext.getSharedPreferences(
-                "DATA",
-                MODE_PRIVATE
+        val type = genericType<ArrayList<Body>>()
+        listaFav = gson.fromJson(json, type)
+
+
+    }
+
+    inline fun <reified T> genericType() = object : TypeToken<T>() {}.type
+
+
+    private fun saveData(
+        title: String?,
+        condition: String?,
+        currencyId: String?,
+        price: Double,
+        secure_thumbnail: List<Picture>,
+        atributes: List<Atribute>
+
+    ) {
+        val sharedPreferences = applicationContext.getSharedPreferences(
+            "DATA",
+            MODE_PRIVATE
+        )
+        val editor = sharedPreferences.edit()
+        val gson = Gson()
+        //listaFav.add(Body(title!!,condition!!,currencyId!!,price,secure_thumbnail, warranty =""))
+        listaFav.add(
+            Body(
+                condition!!,
+                currencyId!!,
+                secure_thumbnail!!,
+                price,
+                title!!,
+                warranty = "",
+                atributes
             )
-            val gson = Gson()
-            val json = sharedPreferences.getString("product_item", null)
-
-            val type = genericType<ArrayList<Body>>()
-            listaFav = gson.fromJson(json, type)
-
-
-        }
-
-        inline fun <reified T> genericType() = object : TypeToken<T>() {}.type
+        )
+        val json = gson.toJson(listaFav)
+        editor.putString("product_item", json)
+        editor.apply()
+        loadData()
 
 
-        private fun saveData(
-            title: String?,
-            condition: String?,
-            currencyId: String?,
-            price: Double,
-            secure_thumbnail: List<Picture>
-        ) {
-            val sharedPreferences = applicationContext.getSharedPreferences(
-                "DATA",
-                MODE_PRIVATE
-            )
-            val editor = sharedPreferences.edit()
-            val gson = Gson()
-            //listaFav.add(Body(title!!,condition!!,currencyId!!,price,secure_thumbnail, warranty =""))
-            listaFav.add(
-                Body(
-                    condition!!,
-                    currencyId!!,
-                    secure_thumbnail!!,
-                    price,
-                    title!!,
-                    warranty = ""
-                )
-            )
-            val json = gson.toJson(listaFav)
-            editor.putString("product_item", json)
-            editor.apply()
-            loadData()
-
-
-        }
-
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+

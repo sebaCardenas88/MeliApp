@@ -93,7 +93,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:gravity="center"
-            android:text="Enviar a nombre de usuario - Direccion"
+            android:text="@string/usuarioIt"
             android:textColor="@color/letraProdcuto"
             app:layout_constraintStart_toEndOf="@id/location"
             app:layout_constraintTop_toTopOf="parent" />
@@ -135,7 +135,7 @@
             android:id="@+id/detalleProd"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:hint="Volskwagen Gol 1.6 - Connect"
+            android:hint="@string/detalleUno"
             android:textSize="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -146,7 +146,7 @@
             android:id="@+id/tituloProd"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:hint="Volskwagen Gol 1.6 - Connect"
+            android:hint="@string/tituloIt"
             android:textSize="17dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="12dp"
@@ -182,7 +182,7 @@
             android:id="@+id/detallePrecio"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:hint="$2.000.000"
+            android:hint="@string/precioIt"
             android:textSize="36dp"
             android:layout_marginTop="24dp"
 
@@ -192,13 +192,23 @@
             android:textColor="@color/black"
             />
 
+        <TextView
+            android:id="@+id/descripcionUno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/detalleIt"
+            android:lineHeight="13dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/detallePrecio"
+            app:layout_constraintEnd_toStartOf="parent"/>
+
         <LinearLayout
             android:id="@+id/portaBoton"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="center"
             android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@id/detallePrecio"
+            app:layout_constraintTop_toBottomOf="@id/descripcionUno"
             app:layout_constraintStart_toStartOf="parent">
 
 
@@ -206,7 +216,7 @@
                 android:id="@+id/btnFavoritos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Añadir a favoritos"
+                android:text="@string/btnFav"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/azulBoton"
                 android:textAlignment="center"

@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-    initRecyclerView()
-        //Activo el buscador
+
+        /**Inite the RecyclerView*/
+        initRecyclerView()
+        /**Whit this, activate the search view*/
         binding.svProducts.setOnQueryTextListener(this)
-
-
 
     }
 
@@ -71,11 +71,11 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                     if (callTop20.isSuccessful) {
                         Log.d("Respuesta20Productos", callTop20Response!!.content.toString())
                         var listarItems = mutableListOf<String>()
-                        for (producto in callTop20Response!!.content) {
-                            Log.d("Producto Individual", producto.type)
+                        for (product in callTop20Response!!.content) {
+                            Log.d("Producto Individual", product.type)
 
-                             if (producto.type.equals("ITEM"))
-                                listarItems.add(producto.id)
+                             if (product.type.equals("ITEM"))
+                                listarItems.add(product.id)
 
                             listado = listarItems.joinToString(",")
                             Log.d("listaItems", listado)
@@ -148,27 +148,10 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         return true
     }
 
-   // fun showError(){
-       // Toast.makeText(this,"No es posible encontrar la informacion solicitada",Toast.LENGTH_SHORT).show()
-    //}
-
-
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return true
     }
 }
 
-//Carga manual de productos
-/**
-productsImages= mutableListOf(Body("dasdad","dsadasd",22.2,"sdsds","https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg")
-,Body("dasdad","dsadasd",22.2,"sdsds","https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg")
-,Body("dasdad","dsadasd",22.2,"sdsds","https://images.dog.ceo/breeds/hound-afghan/n02088094_10263.jpg")
-,Body("dasdad","dsadasd",22.2,"sdsds","https://images.dog.ceo/breeds/hound-afghan/n02088094_10715.jpg")
-,Body("dasdad","dsadasd",22.2,"sdsds","https://images.dog.ceo/breeds/hound-afghan/n02088094_10822.jpg")
-,Body("dasdad","dsadasd",22.2,"sdsds","https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg")
-,Body("dasdad","dsadasd",22.2,"sdsds","https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg")
-,Body("dasdad","dsadasd",22.2,"sdsds","https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg")
-,Body("dasdad","dsadasd",22.2,"sdsds","https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg")
-,Body("dasdad","dsadasd",22.2,"sdsds","https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg")
-,Body("dasdad","dsadasd",22.2,"sdsds","https://images.dog.ceo/breeds/hound-afghan/n02088094_1007.jpg"))*/
+
