@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/primaryYellow"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+       >
 
         <ImageView
             android:layout_width="wrap_content"
@@ -46,7 +47,8 @@
             android:id="@+id/iconShop"
             android:src="@drawable/shop_24"
             android:layout_marginStart="25dp"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            />
 
     </LinearLayout>
 

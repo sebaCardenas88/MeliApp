@@ -7,7 +7,7 @@ class Constants {
 
     companion object{
         val BASE_URL="https://api.mercadolibre.com/"
-        const val ACCESS_TOKEN="APP_USR-6031909682173016-062222-4c8785c982fd5de5d9b54d7c67a2242a-314386493"
+        const val ACCESS_TOKEN="APP_USR-6031909682173016-062309-c8c6ca26e3bbec5c3a3b52d36c11c136-314386493"
 
     }
 }

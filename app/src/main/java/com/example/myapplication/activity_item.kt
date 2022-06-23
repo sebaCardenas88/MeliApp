@@ -22,26 +22,24 @@ import kotlinx.android.synthetic.main.activity_item.view.*
 import java.lang.reflect.Type
 
 class activity_item : AppCompatActivity() {
-
+    /**In this list, I save the data from the sharedPreferences
+     * */
     var listaFav: ArrayList<Body> = ArrayList()
 
     lateinit var binding: ActivityItemBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-
         binding = ActivityItemBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-
+        /**Receive the data from the previous activity y shows it in this one
+         * */
         val itemRecibido = intent.getParcelableExtra<Body>("item")
-        //val image=intent.getStringExtra("image")
         binding.detalleProd.text = itemRecibido?.condition.toString()
         binding.tituloProd.text = itemRecibido?.title.toString()
         binding.detalleVendedor.text = itemRecibido?.currency_id.toString()
-        binding.detallePrecio.text = itemRecibido?.price.toString()
+        binding.detallePrecio.text = "$ ${itemRecibido?.price.toString()}0"
         Glide.with(this).load(itemRecibido!!.pictures[0].secure_url).into(binding.imageProducto)
-        //Agregado
-        binding.descripcionUno.text = itemRecibido?.warranty
 
         var descripcion = ""
         for (i in itemRecibido.attributes) {
@@ -49,24 +47,12 @@ class activity_item : AppCompatActivity() {
                 descripcion += " \n${i.name.toString()} : ${i.value_name.toString()}\n "
             }
         }
-        //Log.d("strin", descripcion)
-        binding.descripcionUno.text=descripcion
+       /**Show the description of the product
+        * */
+        binding.descripcionUno.text=descripcion.toUpperCase()
 
-
-        //Mostrar data si hay algo cargado previamente
-        //FUNCIONA
-        /*
-        for (i in itemRecibido.attributes){
-            if (!(i.name.toString().isNullOrEmpty() || i.value_name.toString().isEmpty()))
-
-
-            Log.d("atrib","${i.name.toString()} : ${i.value_name.toString()}")
-
-        }*/
-
-
-        //OnClickLiatener
-
+        /**This buttom, allows the user, save the data of the product, in the mobile device
+         * */
         binding.btnFavoritos.setOnClickListener {
             saveData(
                 itemRecibido?.title,
@@ -77,9 +63,7 @@ class activity_item : AppCompatActivity() {
                 itemRecibido.attributes
             )
 
-                Log.d("save",listaFav[listaFav.size-1].title)
-
-
+            Log.d("save",listaFav[listaFav.size-1].title)
             Log.d("saveTamanio",listaFav.size.toString())
 
         }
@@ -88,7 +72,8 @@ class activity_item : AppCompatActivity() {
 
     }
 
-
+    /**Function that load the data saved in "Favourites"
+     * */
     private fun loadData() {
         val sharedPreferences = applicationContext.getSharedPreferences(
             "DATA",
@@ -105,7 +90,8 @@ class activity_item : AppCompatActivity() {
 
     inline fun <reified T> genericType() = object : TypeToken<T>() {}.type
 
-
+    /**Function that save the data when the user click on favourites's buttom
+     * */
     private fun saveData(
         title: String?,
         condition: String?,
